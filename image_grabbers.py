@@ -3,7 +3,6 @@ import sys
 from database import db_connect
 
 
-
 #####################################################################################
 # Worker that fetches the image from the tweet and stores it.
 def tweet_worker(q, session, db_table, con) -> None:

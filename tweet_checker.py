@@ -17,13 +17,9 @@ twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 
 twitter.verify_credentials()
 
-
 con, meta = db_connect('boiitems', 'kN1PcOQd', 'boiitems')
 session, db_table = tweet_table_session(con, meta)
 
-
-#####################################################################################
-# Keep scanning for new tweets
 while True:
     user_timeline = twitter.get_mentions_timeline()
     for tweet in user_timeline:

@@ -13,4 +13,4 @@ for i in range(num_threads):
     worker.setDaemon(True)
     worker.start()
 
-queue.join()
+new_tweets_queue.join()
