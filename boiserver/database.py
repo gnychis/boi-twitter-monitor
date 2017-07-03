@@ -4,8 +4,12 @@ from sqlalchemy.orm import mapper, sessionmaker
 from sqlalchemy import BigInteger, Binary, Table, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import mapper, sessionmaker
 
-from entities import Tweet
+from .entities import Tweet
 
+from threading import Lock
+
+lock = Lock()
+mapped = False
 
 def db_connect(user, password, db, host='localhost', port=5432):
     '''Returns a connection and a metadata object'''
@@ -24,6 +28,7 @@ def db_connect(user, password, db, host='localhost', port=5432):
 
 
 def tweet_table_session(con, meta):
+    global mapped
 
     Session = sessionmaker(bind=con)
     session = Session()
@@ -45,6 +50,10 @@ def tweet_table_session(con, meta):
     if not extend_existing:
         meta.create_all(con)
 
-    mapper(Tweet, db_table)
+    lock.acquire()
+    if not mapped:
+        mapper(Tweet, db_table)
+        mapped = True
+    lock.release()
 
     return session, db_table
