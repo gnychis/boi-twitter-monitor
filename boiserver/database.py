@@ -1,7 +1,6 @@
 import sqlalchemy
-from sqlalchemy.orm import mapper, sessionmaker
 
-from sqlalchemy import BigInteger, Binary, Table, Column, Integer, String, ForeignKey
+from sqlalchemy import BigInteger, Binary, Table, Column, String, DateTime
 from sqlalchemy.orm import mapper, sessionmaker
 
 from threading import Lock
@@ -17,12 +16,12 @@ class Tweet(object):
     def __init__(self, tweet_id, image):
         self.tweet_id = tweet_id
         self.image = image
+        self.queued_at = None
+        self.boxed_image = None
+        self.matches = None
 
 
 def db_connect(user: str, password: str, db, host='localhost', port: int=5432) -> Tuple:
-    '''Returns a connection and a metadata object'''
-    # We connect with the help of the PostgreSQL URL
-    # postgresql://federer:grandestslam@localhost:5432/tennis
     url = 'postgresql://{}:{}@{}:{}/{}'
     url = url.format(user, password, host, port, db)
 
@@ -43,6 +42,7 @@ def tweet_table_session(con, meta) -> Tuple:
 
     #####################################################################################
     # Setup the database
+    lock.acquire()
     extend_existing = True
     if "posts" not in meta.tables:
         extend_existing = False
@@ -52,13 +52,15 @@ def tweet_table_session(con, meta) -> Tuple:
         'posts', meta,
         Column('tweet_id', BigInteger, primary_key=True, autoincrement=False),
         Column('image', Binary),
+        Column('queued_at', DateTime),
+        Column('boxed_image', Binary),
+        Column('matches', String),
         extend_existing=extend_existing
     )
 
     if not extend_existing:
         meta.create_all(con)
 
-    lock.acquire()
     if not mapped:
         mapper(Tweet, db_table)
         mapped = True

@@ -1,9 +1,6 @@
 from twython import Twython
-import zmq
 from time import sleep
-import sys
 
-from .database import Tweet
 from . import new_tweets_queue
 from .database import db_connect, tweet_table_session
 
