@@ -47,7 +47,6 @@ def tweet_table_session(con, meta) -> Tuple:
     if "posts" not in meta.tables:
         extend_existing = False
 
-    print("Extend existing: {}".format(extend_existing))
     db_table = Table(
         'posts', meta,
         Column('tweet_id', BigInteger, primary_key=True, autoincrement=False),

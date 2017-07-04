@@ -25,6 +25,6 @@ def check_tweets() -> None:
         for tweet in user_timeline:
             instance = session.query(db_table).filter_by(tweet_id=tweet['id']).first()
             if not instance:
-                print("Putting in {}".format(tweet['id']))
+                # print("Putting in {}".format(tweet['id']))
                 new_tweets_queue.put(tweet)
         sleep(15)
