@@ -3,7 +3,7 @@ import zmq
 from time import sleep
 import sys
 
-from .entities import Tweet
+from .database import Tweet
 from . import new_tweets_queue
 from .database import db_connect, tweet_table_session
 
@@ -13,7 +13,8 @@ APP_SECRET = 'waHGTlmTVKQmsm485tf5WPWpUShQkTecvdvwKOBB7DA8nQlnSB'
 OAUTH_TOKEN = '873749293118742528-w67TCJ7BvP3dRKtU1V6GPxZ2EwHCq0R'
 OAUTH_TOKEN_SECRET = 'T7pmv0jDb1wcZj7jhZXF60EvkkNGC7wOa1O7gafdSv9cL'
 
-if __name__ == "__main__":
+
+def check_tweets() -> None:
 
     twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 

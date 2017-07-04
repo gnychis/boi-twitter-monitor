@@ -4,14 +4,22 @@ from sqlalchemy.orm import mapper, sessionmaker
 from sqlalchemy import BigInteger, Binary, Table, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import mapper, sessionmaker
 
-from .entities import Tweet
-
 from threading import Lock
+
+from typing import Tuple
 
 lock = Lock()
 mapped = False
 
-def db_connect(user, password, db, host='localhost', port=5432):
+
+class Tweet(object):
+
+    def __init__(self, tweet_id, image):
+        self.tweet_id = tweet_id
+        self.image = image
+
+
+def db_connect(user: str, password: str, db, host='localhost', port: int=5432) -> Tuple:
     '''Returns a connection and a metadata object'''
     # We connect with the help of the PostgreSQL URL
     # postgresql://federer:grandestslam@localhost:5432/tennis
@@ -27,7 +35,7 @@ def db_connect(user, password, db, host='localhost', port=5432):
     return con, meta
 
 
-def tweet_table_session(con, meta):
+def tweet_table_session(con, meta) -> Tuple:
     global mapped
 
     Session = sessionmaker(bind=con)
