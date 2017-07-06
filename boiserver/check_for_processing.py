@@ -36,6 +36,9 @@ def check_for_processing() -> None:
     socket.identity = identity.encode('ascii')
     socket.connect('tcp://localhost:5555')
 
+    poll = zmq.Poller()
+    poll.register(socket, zmq.POLLIN)
+
     while True:
 
         q = session.query(Tweet)
@@ -61,4 +64,9 @@ def check_for_processing() -> None:
                 session.flush()
                 session.commit()
 
-        sleep(10)
+        sockets = dict(poll.poll(1000))
+        if socket in sockets:
+            msg = socket.recv()
+            print('Client %s received: %s' % (identity, msg))
+
+        sleep(3)
