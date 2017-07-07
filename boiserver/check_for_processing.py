@@ -64,9 +64,7 @@ def check_for_processing() -> None:
                 session.flush()
                 session.commit()
 
-        sockets = dict(poll.poll(1000))
+        sockets = dict(poll.poll(50))
         if socket in sockets:
             msg = socket.recv()
             print('Client %s received: %s' % (identity, msg))
-
-        sleep(3)
