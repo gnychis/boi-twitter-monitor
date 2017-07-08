@@ -13,8 +13,9 @@ mapped = False
 
 class Tweet(object):
 
-    def __init__(self, tweet_id, image):
+    def __init__(self, tweet_id, image, author=None):
         self.tweet_id = tweet_id
+        self.author = author
         self.image = image
         self.queued_at = None
         self.boxed_image = None
@@ -50,6 +51,7 @@ def tweet_table_session(con, meta) -> Tuple:
     db_table = Table(
         'posts', meta,
         Column('tweet_id', BigInteger, primary_key=True, autoincrement=False),
+        Column('author', String),
         Column('image', Binary),
         Column('queued_at', DateTime),
         Column('boxed_image', Binary),

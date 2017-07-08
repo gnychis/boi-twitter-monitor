@@ -19,7 +19,8 @@ def tweet_worker(new_tweet_queue: Queue) -> None:
 
         r = requests.get(tweet['entities']['media'][0]['media_url'] + ":large", stream=True)
         if r.status_code == 200:
-            clause = db_table.insert().values(tweet_id=tweet['id'], image=r.raw.read(), queued_at=None,
+            clause = db_table.insert().values(tweet_id=tweet['id'], author=tweet["user"]["screen_name"],
+                                              image=r.raw.read(), queued_at=None,
                                               boxed_image=None, matches=None)
             con.execute(clause)
 

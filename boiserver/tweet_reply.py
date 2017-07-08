@@ -1,4 +1,12 @@
 from .database import db_connect, tweet_table_session, Tweet
+from twython import Twython, TwythonError
+
+APP_KEY = '6LTEgHCBchKPIQdXb3IH6kJSI'
+APP_SECRET = 'waHGTlmTVKQmsm485tf5WPWpUShQkTecvdvwKOBB7DA8nQlnSB'
+
+OAUTH_TOKEN = '873749293118742528-seejM0pUZqKOCQbCzIIASapBAFMIXVH'
+OAUTH_TOKEN_SECRET = 'TojXnSU3lWyiWgwoikMGI9JlCSsZjWXpxHwqvayQMYKFk'
+
 
 from . import reply_queue
 from os import path
@@ -17,9 +25,14 @@ def check_for_tweet_reply() -> None:
     tree = ET.parse('boiserver/items.xml')
     root = tree.getroot()
 
+    # Create an easy-to-access dictionary.
     items = {}
     for child in root:
         items[child.attrib["gfx"].lower()] = child.attrib
+
+    # Connect to Twitter.
+    twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+    twitter.verify_credentials()
 
     while True:
 
@@ -44,8 +57,12 @@ def check_for_tweet_reply() -> None:
         session.flush()
         session.commit()
 
+        named_images = [items[element]["name"] for element in found_images]
+        message = ", ".join(named_images)
+        message = "@{} {}".format(tweet_entry.author, message)
+
         print("----------------------")
         print(tweet_id)
+        print(message)
 
-        for img in found_images:
-            print(items[img]["name"])
+        twitter.update_status(status=message, in_reply_to_status_id=tweet_id)
