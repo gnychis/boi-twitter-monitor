@@ -8,7 +8,7 @@ import uuid
 
 import json
 
-from . import ELAPSED_SECONDS_UNTIL_QUEUE
+from . import ELAPSED_SECONDS_UNTIL_QUEUE, reply_queue
 
 
 class TweetForProcessing:
@@ -67,4 +67,4 @@ def check_for_processing() -> None:
         sockets = dict(poll.poll(50))
         if socket in sockets:
             msg = socket.recv()
-            print('Client %s received: %s' % (identity, msg))
+            reply_queue.put(msg)
