@@ -41,13 +41,14 @@ def check_for_processing() -> None:
 
     while True:
 
-        q = session.query(Tweet)
+        # Only get items that have not been matched before.
+        q = session.query(Tweet).filter_by(matches=None)
         results = q.all()
 
         for r in results:  # type: Tweet
 
             if r.queued_at is None or (datetime.now()-r.queued_at).total_seconds() > ELAPSED_SECONDS_UNTIL_QUEUE:
-                print(r.tweet_id, r.queued_at)
+
                 r.queued_at = datetime.now()
 
                 # Base64 the image and get ready to send it.
