@@ -55,6 +55,9 @@ def check_for_tweet_reply() -> None:
             with open("{}.png".format(tweet_id), "wb") as fh:
                 fh.write(base64.decodebytes(match["boxed_image"].encode("utf-8")))
 
+            with open("{}.png".format(tweet_id), "rb") as fh:
+                image_ids = twitter.upload_media(media=fh)
+
             base_path = path.basename(match["path"])
             name = items[base_path]["name"]
             message = "@{} {}".format(tweet_entry.author, name)
@@ -63,10 +66,10 @@ def check_for_tweet_reply() -> None:
             print(tweet_id)
             print(message)
 
-            twitter.update_status(status=message, in_reply_to_status_id=tweet_id)
+            twitter.update_status(status=message, in_reply_to_status_id=tweet_id, media_ids=image_ids['media_id'])
 
         # Save the entry
-        # session.add(tweet_entry)
-        # session.flush()
-        # session.commit()
+        session.add(tweet_entry)
+        session.flush()
+        session.commit()
 

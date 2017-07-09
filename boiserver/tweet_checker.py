@@ -14,7 +14,7 @@ OAUTH_TOKEN_SECRET = 'TojXnSU3lWyiWgwoikMGI9JlCSsZjWXpxHwqvayQMYKFk'
 def queue_tweet(tweet):
 
     # Ensure there is a screenshot attached.
-    if "media" in tweet["entities"]:
+    if "media" in tweet["entities"] and "boiitems" != tweet["user"]["screen_name"].lower():
         new_tweets_queue.put(tweet)
 
 
