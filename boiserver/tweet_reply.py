@@ -1,4 +1,5 @@
 import base64
+from urllib import parse
 
 from .database import db_connect, tweet_table_session, Tweet
 from twython import Twython, TwythonError
@@ -60,7 +61,9 @@ def check_for_tweet_reply() -> None:
 
             base_path = path.basename(match["path"])
             name = items[base_path]["name"]
-            message = "@{} {}".format(tweet_entry.author, name)
+
+            item_url = "http://bindingofisaacrebirth.gamepedia.com/{}".format(parse.quote(name.replace(" ", "_")))
+            message = "@{} {}".format(tweet_entry.author, item_url)
 
             print("----------------------")
             print(tweet_id)
