@@ -65,8 +65,7 @@ def check_for_processing() -> None:
                 session.flush()
                 session.commit()
 
-        sockets = dict(poll.poll(10))
+        sockets = dict(poll.poll(50))
         if socket in sockets:
             msg = socket.recv()
-            print(msg)
-            #reply_queue.put(msg)
+            reply_queue.put(msg)

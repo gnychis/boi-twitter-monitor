@@ -57,13 +57,12 @@ def check_for_tweet_reply() -> None:
         session.flush()
         session.commit()
 
-        # #for element in found_images:
-        # named_images = ["items[element]["name"] for element in found_images]
-        # message = ", ".join(named_images)
-        # message = "@{} {}".format(tweet_entry.author, message)
+        named_images = [items[element]["name"] for element in found_images]
+        message = ", ".join(named_images)
+        message = "@{} {}".format(tweet_entry.author, message)
 
-        # print("----------------------")
-        # print(tweet_id)
-        # print(message)
+        print("----------------------")
+        print(tweet_id)
+        print(message)
 
-        # twitter.update_status(status=message, in_reply_to_status_id=tweet_id)
+        twitter.update_status(status=message, in_reply_to_status_id=tweet_id)
