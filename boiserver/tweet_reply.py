@@ -1,3 +1,5 @@
+import base64
+
 from .database import db_connect, tweet_table_session, Tweet
 from twython import Twython, TwythonError
 
@@ -40,29 +42,31 @@ def check_for_tweet_reply() -> None:
         reply_to_parse = reply_queue.get()
         reply_to_parse = reply_to_parse.decode("utf-8")
 
-        # Split up the tweet ID and the responses.
-        tweet_id = int(reply_to_parse.split("|")[0])
-
-        # Get the found images out, dealing with formatting (get rid of base path)
-        found_images = reply_to_parse.split("|")[1].split(";")
-        found_images = list(filter(None, found_images))
-        found_images = [path.basename(element) for element in found_images]
+        result = json.loads(reply_to_parse)
 
         # Get the database entry
+        tweet_id = result["tweet_id"]
         tweet_entry = session.query(Tweet).filter_by(tweet_id=tweet_id).first()
-        tweet_entry.matches = json.dumps(found_images)
+        tweet_entry.matches = json.dumps(result["matches"])
+
+        for match in result["matches"]:
+
+            # Save the boxed image.
+            with open("{}.png".format(tweet_id), "wb") as fh:
+                fh.write(base64.decodebytes(match["boxed_image"].encode("utf-8")))
+
+            base_path = path.basename(match["path"])
+            name = items[base_path]["name"]
+            message = "@{} {}".format(tweet_entry.author, name)
+
+            print("----------------------")
+            print(tweet_id)
+            print(message)
+
+            twitter.update_status(status=message, in_reply_to_status_id=tweet_id)
 
         # Save the entry
-        session.add(tweet_entry)
-        session.flush()
-        session.commit()
+        # session.add(tweet_entry)
+        # session.flush()
+        # session.commit()
 
-        named_images = [items[element]["name"] for element in found_images]
-        message = ", ".join(named_images)
-        message = "@{} {}".format(tweet_entry.author, message)
-
-        print("----------------------")
-        print(tweet_id)
-        print(message)
-
-        twitter.update_status(status=message, in_reply_to_status_id=tweet_id)
