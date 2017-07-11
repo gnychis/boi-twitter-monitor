@@ -72,11 +72,8 @@ def check_for_tweet_reply() -> None:
             twitter.update_status(status=message, in_reply_to_status_id=tweet_id, media_ids=image_ids['media_id'])
 
         if len(result["matches"]) == 0:
-            message = """Oh no! I couldn't find anything.  Paging @gnychis for help."""
-            try:
-                twitter.update_status(status=message, in_reply_to_status_id=tweet_id)
-            except:
-                pass
+            message = """@{} Oh no! I couldn't find anything.  Paging @gnychis for help.""".format(tweet_entry.author)
+            twitter.update_status(status=message, in_reply_to_status_id=tweet_id)
 
         # Save the entry
         session.add(tweet_entry)
