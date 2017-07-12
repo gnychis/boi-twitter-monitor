@@ -381,7 +381,7 @@
 	<passive description="Spider love" gfx="Collectibles_377_BurstingSack.png" id="377" name="Bursting Sack" />
 	<passive description="Uh oh..." gfx="Collectibles_378_NumberTwo.png" id="378" name="No. 2" />
 	<passive description="Wide shot" gfx="Collectibles_379_PupulaDuplex.png" id="379" name="Pupula Duplex" cache="tearflag" />
-	<passive description="Money talks" gfx="Collectibles_380_PayToPlay.png" id="380" name="Pay To Play" coins="5" />
+	<passive description="Money talks" gfx="Collectibles_380_PayToPlay.png" id="380" name="Pay to Play" coins="5" />
 	<passive achievement="188" description="Your future shines brighter" gfx="Collectibles_381_EdensBlessing.png" id="381" name="Eden's Blessing" cache="firedelay" />
 	<active description="Gotta fetch 'em all!" gfx="Collectibles_382_FriendlyBall.png" id="382" name="Friendly Ball" maxcharges="3" />
 	<active description="Remote tear detonation" gfx="Collectibles_383_TearDetonator.png" id="383" name="Tear Detonator" maxcharges="1" />
@@ -400,8 +400,8 @@
 	<active description="Short cutter" gfx="Collectibles_396_VentricleRazor.png" id="396" name="Ventricle Razor" />
 	<passive description="Controlled tears" gfx="Collectibles_397_TractorBeam.png" id="397" name="Tractor Beam" cache="firedelay tearflag range shotspeed" />
 	<passive description="Shrink shot!" gfx="Collectibles_398_GodsFlesh.png" id="398" name="God's Flesh" cache="tearcolor" />
-	<passive achievement="186" description="Consume thy enemy!" gfx="Collectibles_399_MawOfTheVoid.png" id="399" name="Maw Of The Void" cache="tearcolor damage" devilprice="2" />
-	<passive description="Your destiny" gfx="Collectibles_400_SpearOfDestiny.png" id="400" name="Spear Of Destiny" />
+	<passive achievement="186" description="Consume thy enemy!" gfx="Collectibles_399_MawOfTheVoid.png" id="399" name="Maw of the Void" cache="tearcolor damage" devilprice="2" />
+	<passive description="Your destiny" gfx="Collectibles_400_SpearOfDestiny.png" id="400" name="Spear of Destiny" />
 	<passive description="Sticky bomb shot!" gfx="Collectibles_401_Explosivo.png" id="401" name="Explosivo" cache="tearflag tearcolor" />
 	<passive description="!!!" gfx="Collectibles_402_Chaos.png" id="402" name="Chaos" />
 	<familiar description="Mod buddy!" gfx="Collectibles_403_SpiderMod.png" id="403" name="Spider Mod" />
@@ -416,7 +416,7 @@
 	<passive achievement="219" description="Feed them hate" gfx="Collectibles_412_CambionConception.png" id="412" name="Cambion Conception" />
 	<passive achievement="222" description="Feed them love" gfx="Collectibles_413_ImmaculateConception.png" id="413" name="Immaculate Conception" />
 	<passive description="There are even more options!" gfx="Collectibles_414_MoreOptions.png" id="414" name="More Options" />
-	<passive description="The untainted gain power" gfx="Collectibles_415_CrownOfLight.png" id="415" name="Crown Of Light" soulhearts="4" cache="damage shotspeed range" />
+	<passive description="The untainted gain power" gfx="Collectibles_415_CrownOfLight.png" id="415" name="Crown of Light" soulhearts="4" cache="damage shotspeed range" />
 	<passive achievement="238" description="More stuff to carry!" gfx="Collectibles_416_deeppockets.png" id="416" name="Deep Pockets" />
 	<familiar achievement="221" description="Damage booster" gfx="Collectibles_417_Succubus.png" id="417" name="Succubus" />
 	
@@ -437,7 +437,7 @@
 	<passive description="Prize Bombs!" gfx="Collectibles_432_GlitterBombs.png" id="432" name="Glitter Bombs" bombs="5" />
 	<passive achievement="195" description="Me! And my shaaaadow!" gfx="Collectibles_433_MyShadow.png" id="433" name="My Shadow" />
 	<active description="Gotta catch 'em all?" gfx="Collectibles_434_JarOfFlies.png" id="434" name="Jar of Flies" maxcharges="0" />
-	<familiar description="4-way buddy!" gfx="Collectibles_435_LilLoki.png" id="435" name="Lil Loki" />
+	<familiar description="4-way buddy!" gfx="Collectibles_435_LilLoki.png" id="435" name="Lil' Loki" />
 	<familiar description="Don't cry over it..." gfx="Collectibles_436_Milk.png" id="436" name="Milk!" cache="firedelay" />
 	<active description="Reroll Rewards!" gfx="Collectibles_437_D7.png" id="437" name="D7" maxcharges="3" />
 	<passive description="Memories..." gfx="Collectibles_438_Binky.png" id="438" name="Binky" cache="firedelay" soulhearts="2" />
@@ -657,7 +657,7 @@
 	<trinket description="Stuck!" gfx="trinket_109_ducttape.png" id="109" name="Duct Tape" />
 	<trinket achievement="284" description="Feels lucky..." gfx="trinket_110_silverdollar.png" id="110" name="Silver Dollar" />
 	<trinket achievement="287" description="Drips with blood..." gfx="trinket_111_bloodycrown.png" id="111" name="Bloody Crown" />
-	<trinket description="..." gfx="trinket_112_paytowin.png" id="112" name="Pay To Win" />	
+	<trinket description="..." gfx="trinket_112_paytowin.png" id="112" name="Pay to Win" />
 	
 	<trinket achievement="310" description="I Bring Wrath" gfx="trinket_113_LocustOfWrath.png" id="113" name="Locust of Wrath" />	
 	<trinket achievement="311" description="I Bring Pestilence" gfx="trinket_114_LocustOfPestilence.png" id="114" name="Locust of Pestilence" />	
