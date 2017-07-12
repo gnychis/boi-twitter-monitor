@@ -240,7 +240,7 @@
 	<familiar description="???" gfx="collectibles_238_keypiece1.png" id="238" name="Key Piece 1" />
 	<familiar description="???" gfx="collectibles_239_keypiece2.png" id="239" name="Key Piece 2" />
 	<passive achievement="141" cache="all" description="All stats up... then shuffled" gfx="collectibles_240_experimentaltreatment.png" id="240" name="Experimental Treatment" />
-	<passive description="Wealth... but at what cost?" gfx="collectibles_241_contractfrombelow.png" id="241" name="Contract from Below" />
+	<passive description="Wealth... but at what cost?" gfx="collectibles_241_contractfrombelow.png" id="241" name="Contract From Below" />
 	<passive description="Damage reduction" gfx="collectibles_242_infamy.png" id="242" name="Infamy" />
 	<passive cache="weapon" description="You feel guarded " gfx="collectibles_243_trinityshield.png" id="243" name="Trinity Shield" />
 	<passive achievement="104" description="It's still being tested..." gfx="collectibles_244_techpointfive.png" id="244" name="Tech.5" />
