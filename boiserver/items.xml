@@ -585,7 +585,8 @@
 	<trinket description="Don't swallow it" gfx="trinket_044_safetycap.png" id="44" name="Safety Cap" />
 	<trinket description="Luck of the draw" gfx="trinket_045_aceofspades.png" id="45" name="Ace of Spades" />
 	<trinket description="Consume thy enemy" gfx="trinket_046_isaacsfork.png" id="46" name="Isaac's Fork" />
-	
+
+	<trinket description="Fate chosen" gfx="trinket_047_thepolaroid.png" id="47" name="The Polaroid" />
 	<trinket description="It glows with power" gfx="trinket_048_amissingpage.png" id="48" name="A Missing Page" />
 	<trinket achievement="55" description="Wealth of health" gfx="trinket_049_bloodypenny.png" id="49" name="Bloody Penny" />
 	<trinket achievement="60" description="Wealth of chaos" gfx="trinket_050_burntpenny.png" id="50" name="Burnt Penny" />
